@@ -1,4 +1,4 @@
-package pl.sda.hibernate.pojazd;
+package pl.sda.hibernate;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;

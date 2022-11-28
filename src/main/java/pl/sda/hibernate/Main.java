@@ -1,9 +1,9 @@
-package pl.sda.hibernate.pojazd;
+package pl.sda.hibernate;
 
 import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import pl.sda.hibernate.pojazd.model.Pojazd;
+import pl.sda.hibernate.model.Pojazd;
 
 import java.util.List;
 import java.util.Scanner;
@@ -53,13 +53,21 @@ public class Main {
         System.out.println("Podaj kolor");
         String kolor = scanner.nextLine();
 
-        System.out.println("Podaj rok produkcji");
-        String rokProdukcjiInteger = scanner.nextLine();
-        Integer rokProdukcji = Integer.parseInt(rokProdukcjiInteger);
+        Integer rokProdukcji = null;
+        do {
+            System.out.println("Podaj rok produkcji:");
+            String rokProdukcjiString = scanner.nextLine();
+            rokProdukcji = Integer.parseInt(rokProdukcjiString);
+
+            if (rokProdukcji < 1990 || rokProdukcji > 2020) {
+                // ustawiamy null by wymusić powtórzenie pętli
+                rokProdukcji = null;
+            }
+        } while (rokProdukcji == null);
 
         System.out.println("Czy jest elektryczny");
-        String elektrycznyBoolean = scanner.nextLine();
-        boolean elektryczny = Boolean.parseBoolean(elektrycznyBoolean);
+        String elektrycznyString = scanner.nextLine();
+        boolean elektryczny = Boolean.parseBoolean(elektrycznyString);
 
         return Pojazd.builder()
                 .marka(marka)

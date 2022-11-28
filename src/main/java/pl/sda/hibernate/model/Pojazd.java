@@ -1,4 +1,4 @@
-package pl.sda.hibernate.pojazd.model;
+package pl.sda.hibernate.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
